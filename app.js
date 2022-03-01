@@ -50,8 +50,6 @@ const showAllPhone =(phones)=>{
           </div>
     
          `
-    
-   
          parent.appendChild(div);
        }
        document.getElementById("search-box").value="";
@@ -68,7 +66,6 @@ const showAllPhone =(phones)=>{
 
 // show one divice function 
 const showOne =slug=>{
-    //const showOne =document.getElementById("show-one");
     const url =`https://openapi.programming-hero.com/api/phone/${slug}`;
     fetch(url)
     .then((response) => response.json())
@@ -76,27 +73,21 @@ const showOne =slug=>{
 
 }
 
+// show one setDetails function 
 
 const setDetails =info=>{
     const showOne =document.getElementById("show-one");
     showOne.innerHTML = "";
     console.log(info);
 
-    //const showdetails =document.getElementById("show-details");
-    //showdetails.innerHTML = "";
-   
-
     let sensors = info.mainFeatures.sensors;
     let chipSet = info.mainFeatures.chipSet;
-    //let bluet = info.others.Bluetooth;
 
     console.log(info.releaseDate);
     const error="Not Found";
-     //phone?.date === undefined? error:phone.date
     
 console.log(chipSet);
   console.log(info);
-    //console.log("showOne");
     const div = document.createElement("div");
     div.innerHTML=`
      
@@ -121,11 +112,9 @@ console.log(chipSet);
           <h6>USB: ${info?.others.USB === ""? error:info.others.USB}</h6>
           <h6>WLAN: ${info?.others.WLAN === ""? error:info.others.WLAN}</h6>
           
-          
-          
-          <button onclick="showSensor('${
+          <button onclick="showBtn('${
             sensors}')" type="button" class="bg-light text-primary btn  btn-lg mb-2 ">Sensors</button>
-          <button onclick="showSensor('${
+          <button onclick="showBtn('${
             chipSet}')" type="button" class="bg-light text-primary btn  btn-lg mb-2">chipSet</button>
 
             <div id="show-details"></div>
@@ -138,33 +127,18 @@ console.log(chipSet);
 
     `;
     showOne.appendChild(div);
-   // console.log(div);
 
 }
 
-const showSensor = (chip) =>{
-
-  //const chips = Object.entries(chip);
-
-  console.log(chip);
-  //console.log(display);
-
-    const showdetails =document.getElementById("show-details");
+const showBtn = (information) =>{
+  const showdetails =document.getElementById("show-details");
   showdetails.innerHTML =
 `<table class="table">
-
-
 <tbody>
- 
   <tr>
-   
-    <td>${chip}</td>
+    <td>${information}</td>
   </tr>
-  
 </tbody>
 </table>`;
-
-
- 
   
 }
