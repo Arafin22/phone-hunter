@@ -30,22 +30,23 @@ const showAllPhone =(phones)=>{
         
       for(const phone of items){
         
-       const div = document.createElement("div");
-       div.className="col-sm-12 col-md-4";
+        const parent =document.getElementById("phone-show");
+        const div = document.createElement("div");
+        div.className="col-sm-12 col-md-4 col-lg-4 col-12";
          div.innerHTML =`
        
-    <div>
-         <div class="card" style="width: 18rem;">
-             <img src="${phone.image}" class="card-img-top" alt="...">
-             <div class="card-body">
-               <h5 class="card-title">${phone.brand}</h5>
-               <p class="card-text"></p>
-               <a href="#" class="btn btn-primary">Go somewhere</a>
-               <button onclick="showOne('${phone.slug}')" class="btn btn-success">Details</button>
-               
-             </div>
-           </div>
-        </div>
+         <div class="card text-center shadow-lg p-3 mb-5 bg-body rounded">
+            <div class="card-body">
+                <p></p>
+                    <img src="${phone.image}" alt="">
+                    <h5>Brand: ${phone.brand}</h5>
+                    <h4>Model: ${phone.phone_name}</h4>
+                
+                <button class="btn btn-success">Details</button>
+
+            </div>
+          </div>
+    
          `
     
    
@@ -53,12 +54,10 @@ const showAllPhone =(phones)=>{
        }
        document.getElementById("search-box").value="";
       toggleSpinner('none');
-      const showOne =document.getElementById("show-one");
-      showOne.innerHTML = "";
+      
     }else{
         document.getElementById("search-box").value="";
         toggleSpinner('none');
-        const showOne =document.getElementById("show-one");
-        showOne.innerHTML = "";
+        
     }
 }
